@@ -334,7 +334,7 @@ class Blacklist {
 	 */
 	public function query($force = FALSE) {
 		if($this->queried && !$force) {
-			return $this->getResult();
+			return $this->result;
 		}
 
 		# format address
