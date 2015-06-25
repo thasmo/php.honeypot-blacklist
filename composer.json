@@ -1,0 +1,24 @@
+{
+    "name": "thasmo/honeypot-blacklist",
+    "description": "",
+    "type": "library",
+    "keywords": ["honeypot", "blacklist", "spam", "api", "http"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Thomas Deinhamer",
+            "email": "thasmo@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.7.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Thasmo\\ProjectHoneypot\\": "src/"
+        }
+    }
+}
