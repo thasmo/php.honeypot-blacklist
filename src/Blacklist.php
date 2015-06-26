@@ -32,7 +32,7 @@ class Blacklist {
 	 * Default API key to use.
 	 * @var string
 	 */
-    protected static $defaultKey = NULL;
+	protected static $defaultKey = NULL;
 
 	/**
 	 * API key to use.
@@ -81,7 +81,7 @@ class Blacklist {
 	 * @param string $address
 	 * @param string $key
 	 */
-    public function __construct($address, $key = NULL) {
+	public function __construct($address, $key = NULL) {
 		$this->setAddress($address);
 
 		if(!$key) {
@@ -89,7 +89,7 @@ class Blacklist {
 		}
 
 		$this->setKey($key);
-    }
+	}
 
 	/**
 	 * Validate an API key.
@@ -128,6 +128,7 @@ class Blacklist {
 	/**
 	 * Set the default API key.
 	 * @param $key
+	 * @return void
 	 */
 	public static function setDefaultKey($key) {
 		if(!static::validateKey($key)) {
@@ -139,7 +140,8 @@ class Blacklist {
 
 	/**
 	 * Reset the default API key.
-     */
+	 * @return void
+	 */
 	public static function unsetDefaultKey() {
 		static::$defaultKey = NULL;
 	}
@@ -147,7 +149,7 @@ class Blacklist {
 	/**
 	 * Get the API key.
 	 * @return string|NULL
-     */
+	 */
 	public function getKey() {
 		return $this->key;
 	}
@@ -155,7 +157,8 @@ class Blacklist {
 	/**
 	 * Set the API key.
 	 * @param string $key
-     */
+	 * @return void
+	 */
 	public function setKey($key) {
 		if(!static::validateKey($key)) {
 			throw new InvalidArgumentException('API key is invalid.');
@@ -167,7 +170,7 @@ class Blacklist {
 	/**
 	 * Get the IP address.
 	 * @return string|NULL
-     */
+	 */
 	public function getAddress() {
 		return $this->address;
 	}
@@ -175,7 +178,8 @@ class Blacklist {
 	/**
 	 * Set the IP address.
 	 * @param string $address
-     */
+	 * @return void
+	 */
 	public function setAddress($address) {
 		if(!static::validateAddress($address)) {
 			throw new InvalidArgumentException('IP address is invalid.');
@@ -209,7 +213,7 @@ class Blacklist {
 	 * Indicate whether the IP address refers to a search engine or not.
 	 * @param int $type
 	 * @return bool
-     */
+	 */
 	public function isSearchEngine($type = NULL) {
 		$this->query();
 
@@ -227,7 +231,7 @@ class Blacklist {
 	/**
 	 * Indicate whether the API address is known for suspicious behavior or not.
 	 * @return bool
-     */
+	 */
 	public function isListed() {
 		$this->query();
 		return (bool) ($this->getType() > static::TYPE_SEARCH_ENGINE);
@@ -236,7 +240,7 @@ class Blacklist {
 	/**
 	 * Indicate whether the IP address is suspicious or not.
 	 * @return bool
-     */
+	 */
 	public function isSuspicious() {
 		$this->query();
 		return (bool) ($this->getType() & static::TYPE_SUSPICIOUS);
@@ -245,7 +249,7 @@ class Blacklist {
 	/**
 	 * Indicate whether the IP address refers to a harvester or not.
 	 * @return bool
-     */
+	 */
 	public function isHarvester() {
 		$this->query();
 		return (bool) ($this->getType() & static::TYPE_HARVESTER);
@@ -254,7 +258,7 @@ class Blacklist {
 	/**
 	 * Indicate whether the IP address refers to a spammer or not.
 	 * @return bool
-     */
+	 */
 	public function isSpammer() {
 		$this->query();
 		return (bool) ($this->getType() & static::TYPE_SPAMMER);
@@ -263,7 +267,7 @@ class Blacklist {
 	/**
 	 * Get the IP's last activity in days.
 	 * @return int|NULL
-     */
+	 */
 	public function getActivity() {
 		$this->query();
 		return $this->getResult('activity');
@@ -272,7 +276,7 @@ class Blacklist {
 	/**
 	 * Get the IP's threat score.
 	 * @return int
-     */
+	 */
 	public function getThreat() {
 		$this->query();
 		return $this->getResult('threat');
@@ -281,7 +285,7 @@ class Blacklist {
 	/**
 	 * Get the IP's type.
 	 * @return int
-     */
+	 */
 	public function getType() {
 		$this->query();
 		return $this->getResult('type');
@@ -291,7 +295,7 @@ class Blacklist {
 	 * Check if the IP was active within the given number of days.
 	 * @param int $days
 	 * @return bool
-     */
+	 */
 	public function isActive($days) {
 		$this->query();
 		return $days >= $this->getActivity();
@@ -301,7 +305,7 @@ class Blacklist {
 	 * Check if the IP's threat score is within in the given score.
 	 * @param int $threat
 	 * @return bool
-     */
+	 */
 	public function isThreat($threat) {
 		$this->query();
 		return $threat <= $this->getThreat();
@@ -310,7 +314,7 @@ class Blacklist {
 	/**
 	 * Get the IP's search engine name if applicable.
 	 * @return bool|FALSE
-     */
+	 */
 	public function getName() {
 		$this->query();
 
@@ -334,7 +338,7 @@ class Blacklist {
 	 */
 	public function query($force = FALSE) {
 		if($this->queried && !$force) {
-			return $this->getResult();
+			return $this->result;
 		}
 
 		# format address
@@ -405,7 +409,8 @@ class Blacklist {
 
 	/**
 	 * Reset the state of the object.
-     */
+	 * @return void
+	 */
 	protected function reset() {
 		$this->result = NULL;
 		$this->queried = FALSE;

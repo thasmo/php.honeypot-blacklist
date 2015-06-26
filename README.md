@@ -2,6 +2,8 @@
 
 A simple PHP library for querying the [Project Honeypot Http:BL API](http://www.projecthoneypot.org/httpbl_api.php).
 
+[![Build Status](https://travis-ci.org/thasmo/php.honeypot-blacklist.svg?branch=develop)](https://travis-ci.org/thasmo/php.honeypot-blacklist)
+
 ## Usage
 
 ### Create a new instance

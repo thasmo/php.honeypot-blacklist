@@ -1,6 +1,6 @@
 {
     "name": "thasmo/honeypot-blacklist",
-    "description": "",
+    "description": "A simple PHP library for querying the Project Honeypot Http:BL API.",
     "type": "library",
     "keywords": ["honeypot", "blacklist", "spam", "api", "http"],
     "license": "MIT",
