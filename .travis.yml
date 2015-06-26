@@ -6,7 +6,10 @@ php:
   - 7.0
   - hhvm
 
+before_install:
+  - composer self-update
+
 install:
   - composer install
 
-script: phpunit
+script: phpunit tests
