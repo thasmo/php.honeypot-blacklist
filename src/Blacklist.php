@@ -128,6 +128,7 @@ class Blacklist {
 	/**
 	 * Set the default API key.
 	 * @param $key
+	 * @return void
 	 */
 	public static function setDefaultKey($key) {
 		if(!static::validateKey($key)) {
@@ -139,6 +140,7 @@ class Blacklist {
 
 	/**
 	 * Reset the default API key.
+	 * @return void
 	 */
 	public static function unsetDefaultKey() {
 		static::$defaultKey = NULL;
@@ -155,6 +157,7 @@ class Blacklist {
 	/**
 	 * Set the API key.
 	 * @param string $key
+	 * @return void
 	 */
 	public function setKey($key) {
 		if(!static::validateKey($key)) {
@@ -175,6 +178,7 @@ class Blacklist {
 	/**
 	 * Set the IP address.
 	 * @param string $address
+	 * @return void
 	 */
 	public function setAddress($address) {
 		if(!static::validateAddress($address)) {
@@ -405,6 +409,7 @@ class Blacklist {
 
 	/**
 	 * Reset the state of the object.
+	 * @return void
 	 */
 	protected function reset() {
 		$this->result = NULL;
