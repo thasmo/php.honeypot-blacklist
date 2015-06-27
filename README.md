@@ -3,6 +3,8 @@
 A simple PHP library for querying the [Project Honeypot Http:BL API](http://www.projecthoneypot.org/httpbl_api.php).
 
 [![Build Status](https://travis-ci.org/thasmo/php.honeypot-blacklist.svg?branch=develop)](https://travis-ci.org/thasmo/php.honeypot-blacklist)
+[![Coverage Status](https://coveralls.io/repos/thasmo/php.honeypot-blacklist/badge.svg)](https://coveralls.io/r/thasmo/php.honeypot-blacklist)
+[![Latest Stable Version](https://poser.pugx.org/thasmo/honeypot-blacklist/v/stable)](https://packagist.org/packages/thasmo/honeypot-blacklist)
 
 ## Usage
 
