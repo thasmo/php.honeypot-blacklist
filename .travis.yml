@@ -8,8 +8,15 @@ php:
 
 before_install:
   - composer self-update
+  - composer --version
 
 install:
   - composer install
 
-script: phpunit tests
+before_script:
+  - mkdir -p build/logs/
+
+script: phpunit --coverage-clover build/logs/clover.xml tests
+
+after_success:
+  - php vendor/bin/coveralls
