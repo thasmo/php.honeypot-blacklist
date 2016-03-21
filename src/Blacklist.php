@@ -50,7 +50,7 @@ class Blacklist {
 	 * Transformed result from the API.
 	 * @var array
 	 */
-	protected $result = NULL;
+	protected $result = [];
 
 	/**
 	 * Determine if API has already been queried.
@@ -412,7 +412,7 @@ class Blacklist {
 	 * @return void
 	 */
 	protected function reset() {
-		$this->result = NULL;
+		$this->result = [];
 		$this->queried = FALSE;
 	}
 }
