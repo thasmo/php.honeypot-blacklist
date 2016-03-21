@@ -73,6 +73,57 @@ class BlacklistTest extends PHPUnit_Framework_TestCase {
 		], $dummy->query());
 	}
 
+	public function testResult() {
+		$dummy = $this->dummyBlacklistforQuery('127.1.2.3');
+
+		$this->assertEquals([
+			'activity' => 1,
+			'threat' => 2,
+			'type' => 3
+		], $dummy->getResult());
+	}
+
+	public function testSearchEngineNames() {
+		$dummy = $this->dummyBlacklistforQuery('127.0.0.0');
+		$this->assertFalse($dummy->getName());
+
+		$dummy = $this->dummyBlacklistforQuery('127.0.12.0');
+		$this->assertFalse($dummy->getName());
+
+		$dummy = $this->dummyBlacklistforQuery('127.0.1.0');
+		$this->assertEquals('AltaVista', $dummy->getName());
+
+		$dummy = $this->dummyBlacklistforQuery('127.0.2.0');
+		$this->assertEquals('Ask', $dummy->getName());
+
+		$dummy = $this->dummyBlacklistforQuery('127.0.3.0');
+		$this->assertEquals('Baidu', $dummy->getName());
+
+		$dummy = $this->dummyBlacklistforQuery('127.0.4.0');
+		$this->assertEquals('Excite', $dummy->getName());
+
+		$dummy = $this->dummyBlacklistforQuery('127.0.5.0');
+		$this->assertEquals('Google', $dummy->getName());
+
+		$dummy = $this->dummyBlacklistforQuery('127.0.6.0');
+		$this->assertEquals('Looksmart', $dummy->getName());
+
+		$dummy = $this->dummyBlacklistforQuery('127.0.7.0');
+		$this->assertEquals('Lycos', $dummy->getName());
+
+		$dummy = $this->dummyBlacklistforQuery('127.0.8.0');
+		$this->assertEquals('MSN', $dummy->getName());
+
+		$dummy = $this->dummyBlacklistforQuery('127.0.9.0');
+		$this->assertEquals('Yahoo', $dummy->getName());
+
+		$dummy = $this->dummyBlacklistforQuery('127.0.10.0');
+		$this->assertEquals('Cuil', $dummy->getName());
+
+		$dummy = $this->dummyBlacklistforQuery('127.0.11.0');
+		$this->assertEquals('InfoSeek', $dummy->getName());
+	}
+
 	private function validKey() {
 		return 'abcdefghijkl';
 	}
