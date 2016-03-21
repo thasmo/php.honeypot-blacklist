@@ -1,6 +1,9 @@
 # Change Log
 
-## [Next][next]
+## [next]
+
+### Fixed
+- Fix getting a specific result key when no result was found.
 
 ## [0.1.1] - 2015-06-26
 
